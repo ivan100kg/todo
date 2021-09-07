@@ -1,10 +1,13 @@
 {% extends "tasks/base.html" %}
 {% block content %}
-<p>Are you sure you want to delete "{{task}}"?</p>
-<a href="{% url 'home' %}">Cancel</a>
-<form action="" method="POST">
-    {% csrf_token %}
-    <input type="submit" value="Confirm">
-    
-</form>
+<div class="container">
+    <h3>Delete Task</h3>
+    <p>Are you sure you want to delete "{{task}}"?</p>
+    <a class="btn btn-sm btn-warning" href="{% url 'home' %}">Cancel</a>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input class="btn btn-sm btn-danger" type="submit" value="Confirm">
+
+    </form>
+</div>
 {% endblock %}
