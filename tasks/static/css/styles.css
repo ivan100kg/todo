@@ -159,9 +159,17 @@ body {
     margin-left: 5px;
 }
 
-.button {}
+.form__title {
+    display: inline-block;
+    padding: 3px;
+    border-radius: 5px;
+    background-color: coral;
+    font-size: 24px;
+}
 
-.tasks {}
+.tasks {
+    margin-top: 10px;
+}
 
 .tasks__row {
     padding: 5px;
@@ -187,6 +195,7 @@ body {
 }
 
 .button {
+    display: inline-block;
     font-size: 14px;
     border: 2px solid black;
     border-radius: 20%;

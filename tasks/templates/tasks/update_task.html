@@ -1,12 +1,22 @@
-{% extends "tasks/base.html" %}
-{% block content %}
-<div class="container">
-    <h3>Update Task</h3>
+{% extends "tasks/base.html" %} {% block content %}
+<div class="wrapper">
+    <div class="content">
+        <div class="form">
+            <div class="container">
+                <div class="form__title">Update Task</div>
+                <form class="form__row form" action="" method="POST">
+                    {% csrf_token %}
+                    <div class="form__field">
+                        <div class="form__text">{{ form.title }}</div>
+                        <div class="form__commplete">complete: {{ form.complete }}</div>
 
-    <form action="" method="POST">
-        {% csrf_token %}
-        {{ form }}
-        <input class="btn btn-sm btn-warning" type="submit" value="Update Task">
-    </form>
+                    </div>
+                    <button class="form__button button" type="submit">update</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
+
+
 {% endblock %}
