@@ -1,14 +1,66 @@
-{% extends "tasks/base.html" %}
-{% block content %}
+{% extends "tasks/base.html" %} {%load static%} {% block content %}
 
-<div class="container">
+<div class="wrapper">
+    <div class="content">
+        <div class="header">
+            <div class="container">
+                <div class="header__row">
+                    <div class="header__body">
+                        <div class="header__title">TO DO</div>
+                        <div class="header__text">My first application</div>
+                    </div>
+                    <div class="header__image">
+                        <img class="img" src="{% static 'img/ava_ivar1000.png' %}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form">
+            <div class="container">
+                <form action="{% url 'home' %}" class="form__row form" method="POST">
+                    {% csrf_token %}
+                    <div class="form__field">
+                        {{ form.title }}
+                    </div>
+                    <button class="form__button button" type="submit">Create Task</button>
+                </form>
+            </div>
+        </div>
+        <div class="tasks">
+            <div class="container">
+                {% for task in tasks %}
+                <div class="tasks__row">
+                    <div class="tasks__body">
+                        <a class="tasks__button button" href="{% url 'update_task' task.id %}">update</a>
+                        <a class="tasks__button button" href="{% url 'delete_task' task.id %}">delete</a>
+                        <div class="tasks__text">
+                            {% if task.complete %}
+                            <del>{{ task }}</del> {% else %}
+                            <span>{{ task }}</span> {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class='container'>
+            <div class="footer__row">
+                <div class="footer__text">Web Developer 2021</div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<!-- <div class="wrapper">
     <h3>To Do</h3>
     <form action="{% url 'home' %}" method="POST">
         {% csrf_token %}
         {{ form.title }}
         <input class="btn btn-sm btn-info" type="submit" value="Create Task">
-    </form>
-    {% for task in tasks %}
+    </form> -->
+<!-- {% for task in tasks %}
     <div>
         <a class="btn btn-sm btn-warning" href="{% url 'update_task' task.id %}">Update</a>
         <a class="btn btn-sm btn-danger" href="{% url 'delete_task' task.id %}">Delete</a>
@@ -19,5 +71,5 @@
         {% endif %}
     </div>
     {% endfor %}
-</div>
+</div> -->
 {% endblock %}
