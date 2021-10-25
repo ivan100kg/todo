@@ -1,5 +1,5 @@
 # todo
-Simple 'todo' application with Django.
+Simple `todo` application with Django.
 
 ### Install dependencies
 ```shell
